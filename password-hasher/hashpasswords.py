@@ -15,9 +15,13 @@ if(userAction == "WRITE"):
 	hashed_password = sha_class.hexdigest()
 	print("password hashed")
 
-	passfile = open('password.json', 'a')
+	passfile_read = open('password.json', 'r')
+	passwords = passfile_read.readlines()
+	passfile_read.close()
 	entry = {}
 	entry['url'] = url
 	entry['hashed password'] = hashed_password
-	json.dump(entry, passfile)
-	passfile.close()	
+	passwords.append(entry)
+	writeFile = open('password.json', 'w')
+	json.dump(passwords, writeFile)
+	writeFile.close()	
