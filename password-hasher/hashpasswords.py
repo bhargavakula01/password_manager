@@ -31,7 +31,10 @@ else:
 		list_dict.append(dict_pass)
 	
 	# finding password
+	found = False
 	for x in list_dict:
 		if(website == x['url']):
-			#decode hashed password
-			
+			print( x['hashed password'])
+			found = True
+	if(not found):
+		print('url not found')
