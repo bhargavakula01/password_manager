@@ -15,13 +15,23 @@ if(userAction == "WRITE"):
 	hashed_password = sha_class.hexdigest()
 	print("password hashed")
 
-	passfile_read = open('password.json', 'r')
-	passwords = passfile_read.readlines()
-	passfile_read.close()
 	entry = {}
 	entry['url'] = url
 	entry['hashed password'] = hashed_password
-	passwords.append(entry)
-	writeFile = open('password.json', 'w')
-	json.dump(passwords, writeFile)
-	writeFile.close()	
+	writeFile = open('password.json', 'a')
+	json.dump(entry, writeFile)
+	writeFile.close()
+else:
+	readFile = open('password.json', 'r')
+	website = input('what is the url of the website that you need password for: ')
+	list_pass = readFile.readlines()
+	list_dict = []
+	for x in list_pass:
+		dict_pass = json.loads(x)
+		list_dict.append(dict_pass)
+	
+	# finding password
+	for x in list_dict:
+		if(website == x['url']):
+			#decode hashed password
+			
