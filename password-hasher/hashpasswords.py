@@ -1,16 +1,9 @@
 from hashlib import sha256
 import json
 
-#creating instance of sha256 class
-
-sha_class = sha256()
-
-userAction = input("do you want to read or write from pasword file: ")
-
-if(userAction == "WRITE"):
-	url = input("what is the url of the website: ")
-	user_normal_password = input('enter password that you want to hash: ')
-	user_pass_encode = user_normal_password.encode()
+def add_to_file(url, password):
+	sha_class = sha256()
+	user_pass_encode = password.encode()
 	sha_class.update(user_pass_encode)
 	hashed_password = sha_class.hexdigest()
 	print("password hashed")
@@ -21,20 +14,47 @@ if(userAction == "WRITE"):
 	writeFile = open('password.json', 'a')
 	json.dump(entry, writeFile)
 	writeFile.close()
-else:
+
+def read_from_file(url):
 	readFile = open('password.json', 'r')
-	website = input('what is the url of the website that you need password for: ')
 	list_pass = readFile.readlines()
-	list_dict = []
-	for x in list_pass:
-		dict_pass = json.loads(x)
-		list_dict.append(dict_pass)
-	
-	# finding password
-	found = False
-	for x in list_dict:
-		if(website == x['url']):
-			print( x['hashed password'])
-			found = True
-	if(not found):
-		print('url not found')
+		list_dict = []
+		for x in list_pass:
+			dict_pass = json.loads(x)
+			list_dict.append(dict_pass)
+
+		# finding password
+		found = False
+		for x in list_dict:
+			if(website == x['url']):
+				print( x['hashed password'])
+				found = True
+		if(not found):
+			print('url not found')
+def updating_from_file(url):
+
+def main():
+	userAction = input("do you want to read or write from pasword file: ")
+	if(userAction == "WRITE"):
+		url = input("what is the url of the website: ")
+		user_normal_password = input('enter password that you want to hash: ')
+		add_to_file(url, user_normal_password)
+	elif(userAction :
+		readFile = open('password.json', 'r')
+		website = input('what is the url of the website that you need password for: ')
+		list_pass = readFile.readlines()
+		list_dict = []
+		for x in list_pass:
+			dict_pass = json.loads(x)
+			list_dict.append(dict_pass)
+
+		# finding password
+		found = False
+		for x in list_dict:
+			if(website == x['url']):
+				print( x['hashed password'])
+				found = True
+		if(not found):
+			print('url not found')
+if __name__ == "__main__":
+	main()
