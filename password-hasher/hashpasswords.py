@@ -31,6 +31,7 @@ def read_from_file(url):
 				found = True
 		if(not found):
 			print('url not found')
+
 def updating_from_file(url):
 	readFile = open('password.json','r')
 	inputpass = input("Enter new password that you want to hash")
@@ -76,5 +77,7 @@ def main():
 				found = True
 		if(not found):
 			print('url not found')
+
+
 if __name__ == "__main__":
 	main()
