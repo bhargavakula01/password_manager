@@ -68,33 +68,10 @@ def main():
 			for x in list_pass:
 				dict_pass = json.loads(x)
 				list_dict.append(dict_pass)
-
-<<<<<<< HEAD
-		# finding password
-		found = False
-		for x in list_dict:
-			if(website == x['url']):
-				print( x['hashed password'])
-				found = True
-		if(not found):
-			print('url not found')
-
-
-=======
-			# finding password
-			found = False
-			for x in list_dict:
-				if(website == x['url']):
-					print( x['hashed password'])
-					found = True
-			if(not found):
-				print('url not found')
 		else:
 			website_update = input('What website do you want to update password for?: ")
 		
 		userAction = input("do you want to write, find, or replace from pasword file: ")
 		
-		
->>>>>>> 28572d0222dd90d11519625e687007233f95a012
 if __name__ == "__main__":
 	main()
